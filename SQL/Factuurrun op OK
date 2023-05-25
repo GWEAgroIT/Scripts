@@ -1,0 +1,14 @@
+-- juiste runnummer en BV selecteren
+select * from "EQ_SalesInvoice" where CompanyCode='004' and SalesInvoiceRunId=535 and PrintInd=1;
+
+select * from "EQ_SalesInvoice" where CompanyCode='004' and SalesInvoiceRunId=535 and EmailInd=1;
+
+update  "EQ_SalesInvoice" 
+set PrintStatus='O'
+where CompanyCode='004' and SalesInvoiceRunId=535 and PrintInd=1;
+
+update  "EQ_SalesInvoice" 
+set EmailStatus='O'
+where CompanyCode='004' and SalesInvoiceRunId=535 and EmailInd=1;
+
+update "EQ_SalesInvoiceRun" set Status=2 where Companycode='004' and ID=535;

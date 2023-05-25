@@ -1,0 +1,12 @@
+/****** Script voor het vinden van ontbrekende barcodes  ******/
+SELECT TOP 1000 [PartId]
+      ,[CompanyCode]
+      ,[PartNo]
+      ,[Deleted]
+      ,[Comment]
+      ,[CopyCommentToOrderInd]
+      ,[InternalNote]
+      ,[CopyInternalNoteToOrderInd]
+      ,[LastChanged]
+  FROM [AGROITDDEDB].[dbo].[MyCompanyPart]
+  where not exists (select * FROM [AGROITDDEDB].[dbo].[MyCompanyPartBarcode] where [AGROITDDEDB].[dbo].[MyCompanyPartBarcode].PartId=[AGROITDDEDB].[dbo].[MyCompanyPart].PartId and [AGROITDDEDB].[dbo].[MyCompanyPartBarcode].Type='I' )
